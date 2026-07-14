@@ -104,7 +104,7 @@
         position: relative;
         background: linear-gradient(150deg, var(--route-blue) 0%, #0D2038 100%);
         color: #fff;
-        padding: 100px 20px 64px;
+        padding: 96px 20px 64px;
         text-align: center;
         overflow: hidden;
     }
@@ -131,28 +131,30 @@
 
     .hero-inner { position: relative; z-index: 2; }
 
-    .badge {
-        width: 84px; height: 84px;
-        margin: 0 auto 22px;
-        border-radius: 50%;
-        background: var(--route-blue);
-        border: 3px solid var(--signal-amber);
-        display: flex; align-items: center; justify-content: center;
-        font-family: 'Oswald', sans-serif;
-        font-size: 1.7rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    /* decorative motif replacing a photo slot — a small highway medallion
+       flanked by dashed lane markings, echoing the mile-marker language
+       used later in the timeline */
+    .hero-motif {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 22px;
     }
-    html[dir="rtl"] .badge { font-family: 'Vazirmatn', sans-serif; }
-
-    .coord {
-        font-family: 'Oswald', sans-serif;
-        font-size: 0.72rem;
-        letter-spacing: 2px;
-        color: rgba(255,255,255,0.55);
-        text-transform: uppercase;
-        margin-bottom: 14px;
+    .hero-motif .lane {
+        width: 56px;
+        height: 0;
+        border-top: 2px dashed rgba(255,255,255,0.32);
+    }
+    .hero-motif .medallion {
+        width: 46px; height: 46px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.06);
+        border: 1.5px solid rgba(226,166,59,0.55);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--signal-amber);
+        font-size: 1.05rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     }
 
     h1 {
@@ -177,17 +179,15 @@
         display: inline-block;
         background: var(--go-green);
         color: #fff;
-        padding: 9px 22px;
+        padding: 10px 26px;
         border-radius: 4px;
         border: 1.5px solid rgba(255,255,255,0.3);
-        font-family: 'Oswald', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        font-size: 0.72rem;
+        font-size: 0.86rem;
+        letter-spacing: 0.2px;
         margin-bottom: 28px;
         max-width: 90%;
     }
-    html[dir="rtl"] .route-strip { font-family: 'Vazirmatn', sans-serif; text-transform: none; letter-spacing: 0; font-weight: 600; }
+    html[dir="rtl"] .route-strip { font-weight: 600; }
 
     .contact-bar {
         display: flex;
@@ -222,16 +222,24 @@
     .card {
         background: var(--card);
         border-radius: var(--radius);
+        border-top: 4px solid var(--route-blue-2);
         padding: 38px 40px;
         box-shadow: 0 10px 26px rgba(20,32,39,0.06);
         margin-bottom: 24px;
-        border: 1px solid #EDEAE0;
+        border-inline: 1px solid #EDEAE0;
+        border-bottom: 1px solid #EDEAE0;
     }
+    .card.c-about   { border-top-color: var(--route-blue); }
+    .card.c-edu     { border-top-color: var(--route-blue-2); }
+    .card.c-teach   { border-top-color: var(--go-green); }
+    .card.c-exp     { border-top-color: var(--signal-amber); }
+    .card.c-honors  { border-top-color: var(--route-blue); }
+    .card.c-skills  { border-top-color: var(--route-blue-2); }
 
     .section-title {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 13px;
         color: var(--route-blue);
         font-family: 'Oswald', sans-serif;
         font-weight: 600;
@@ -243,7 +251,19 @@
         border-bottom: 2px dashed var(--line-strong);
     }
     html[dir="rtl"] .section-title { font-family: 'Vazirmatn', sans-serif; text-transform: none; letter-spacing: 0; font-weight: 700; }
-    .section-title i { color: var(--signal-amber); font-size: 1.05rem; }
+
+    .icon-badge {
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex; align-items: center; justify-content: center;
+        color: #fff;
+        font-size: 0.92rem;
+        background: var(--route-blue);
+    }
+    .icon-badge.blue2 { background: var(--route-blue-2); }
+    .icon-badge.green { background: var(--go-green); }
+    .icon-badge.amber { background: var(--signal-amber); color: var(--route-blue); }
 
     .about-text { color: var(--ink-soft); text-align: justify; font-size: 1rem; }
 
@@ -319,9 +339,10 @@
     .honor-kicker.fellowship { color: var(--route-blue-2); }
     .honor-kicker.grant { color: var(--go-green); }
     .honor-title { font-weight: 700; color: var(--route-blue); margin-bottom: 4px; font-size: 1rem; }
+    .honor-title a { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
     .honor-body { color: var(--ink-soft); font-size: 0.93rem; }
 
-    /* ---------------- skills ---------------- */
+    /* ---------------- skills (numeric, out of 10) ---------------- */
     .skill-group-title {
         font-family: 'Oswald', sans-serif;
         font-size: 0.78rem;
@@ -334,13 +355,37 @@
     html[dir="rtl"] .skill-group-title { font-family: 'Vazirmatn', sans-serif; text-transform: none; letter-spacing: 0; }
     .skill-group-title:first-of-type { margin-top: 0; }
 
-    .skill-row { display: flex; align-items: center; gap: 16px; margin-bottom: 13px; }
+    .skill-row { display: flex; align-items: center; gap: 14px; margin-bottom: 13px; }
     html[dir="rtl"] .skill-row { flex-direction: row-reverse; }
-    .skill-name { width: 175px; flex-shrink: 0; font-weight: 600; font-size: 0.9rem; display: flex; justify-content: space-between; gap: 8px; }
-    .skill-name .level-tag { font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); }
-    .skill-track { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
-    html[dir="rtl"] .skill-track { direction: rtl; }
-    .skill-fill { height: 100%; background: linear-gradient(90deg, var(--route-blue-2), var(--signal-amber)); border-radius: 4px; }
+    .skill-name { width: 178px; flex-shrink: 0; font-weight: 600; font-size: 0.9rem; }
+
+    .skill-track {
+        flex: 1;
+        height: 10px;
+        border-radius: 3px;
+        position: relative;
+        overflow: hidden;
+        background: repeating-linear-gradient(90deg, var(--line) 0, var(--line) 8%, transparent 8%, transparent 10%);
+    }
+    .skill-fill {
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0; bottom: 0;
+        background: linear-gradient(90deg, var(--route-blue-2), var(--signal-amber));
+        -webkit-mask-image: repeating-linear-gradient(90deg, #000 0, #000 8%, transparent 8%, transparent 10%);
+                mask-image: repeating-linear-gradient(90deg, #000 0, #000 8%, transparent 8%, transparent 10%);
+    }
+    .skill-score {
+        width: 46px;
+        flex-shrink: 0;
+        text-align: center;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 700;
+        font-size: 0.92rem;
+        color: var(--route-blue);
+    }
+    html[dir="rtl"] .skill-score { font-family: 'Vazirmatn', sans-serif; }
+    .skill-score span { font-weight: 400; font-size: 0.72rem; color: var(--ink-soft); }
 
     /* ---------------- footer ---------------- */
     footer {
@@ -356,7 +401,10 @@
         h1 { font-size: 2rem; }
         .card { padding: 28px 22px; }
         .skill-name { width: 120px; font-size: 0.82rem; }
+        .skill-score { width: 38px; font-size: 0.8rem; }
         .honor-card { flex-direction: column; }
+        .hero-motif .lane { width: 30px; }
+        .hero-motif .medallion { width: 38px; height: 38px; font-size: 0.92rem; }
     }
 
     /* ---------------- print (A4) ---------------- */
@@ -372,7 +420,7 @@
             border-bottom: 2px solid var(--route-blue);
         }
         header::before, header::after { display: none !important; }
-        .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none; }
+        .hero-motif { display: none !important; }
         h1 { color: #000 !important; }
         .tagline { color: #333 !important; }
         .route-strip, .contact-bar a, .contact-bar span {
@@ -380,11 +428,11 @@
             box-shadow: none !important;
         }
         .contact-bar a, .contact-bar span { color: #000 !important; background: none !important; border: 1px solid #999 !important; }
-        .card { box-shadow: none !important; border: 1px solid #ddd; padding: 18px 4px; margin-bottom: 10px; page-break-inside: avoid; }
+        .card { box-shadow: none !important; border: 1px solid #ddd; border-top: 1px solid #ddd !important; padding: 18px 4px; margin-bottom: 10px; page-break-inside: avoid; }
         .section-title { color: #000 !important; }
         .item-title, .item-subtitle, .honor-title, .thesis-line strong { color: #000 !important; }
         .item-meta.live { background: none !important; }
-        .skill-fill, .honor-icon { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .skill-fill, .honor-icon, .icon-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
 </style>
 </head>
@@ -405,13 +453,16 @@
 
 <header>
     <div class="hero-inner">
-        <div class="badge">SK</div>
-        <div class="coord">35.6929&deg; N, 51.2542&deg; E &mdash; TEHRAN, IRAN</div>
+        <div class="hero-motif" aria-hidden="true">
+            <span class="lane"></span>
+            <span class="medallion"><i class="fas fa-road"></i></span>
+            <span class="lane"></span>
+        </div>
 
         <div class="en-content">
             <h1>Saeed Kakavandi</h1>
             <p class="tagline">Transportation Engineer &amp; Data Analyst</p>
-            <div class="route-strip">Traffic Safety &bull; GPS Fleet Analytics &bull; Fuzzy Ramp Control &bull; Geospatial Data</div>
+            <div class="route-strip">Turning transportation data into safer, smarter roads</div>
             <div class="contact-bar">
                 <a href="https://www.google.com/maps/place/Tehransar,+District+21,+Tehran,+Tehran+Province,+Iran/@35.6921918,51.2412539,14z/data=!3m1!4b1!4m6!3m5!1s0x3f8dfbebdac71fbb:0xe5a8ae53aa1e7b5!8m2!3d35.6928794!4d51.2541919!16s%2Fm%2F03d1vy8" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> Tehran, Tehransar</a>
                 <a href="tel:+989919719176"><i class="fas fa-phone"></i> +98 991 971 9176</a>
@@ -423,7 +474,7 @@
         <div class="fa-content">
             <h1>سعید کاکاوندی</h1>
             <p class="tagline">مهندس حمل‌ونقل و تحلیل‌گر داده</p>
-            <div class="route-strip">ایمنی ترافیک &bull; تحلیل ناوگان GPS &bull; کنترل فازی رمپ &bull; داده‌های مکانی</div>
+            <div class="route-strip">تبدیل داده‌های حمل‌ونقل به جاده‌هایی ایمن‌تر و هوشمندتر</div>
             <div class="contact-bar">
                 <a href="https://www.google.com/maps/place/Tehransar,+District+21,+Tehran,+Tehran+Province,+Iran/@35.6921918,51.2412539,14z/data=!3m1!4b1!4m6!3m5!1s0x3f8dfbebdac71fbb:0xe5a8ae53aa1e7b5!8m2!3d35.6928794!4d51.2541919!16s%2Fm%2F03d1vy8" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> تهران، تهرانسر</a>
                 <a href="tel:+989919719176"><i class="fas fa-phone"></i> ۰۹۹۱۹۷۱۹۱۷۶</a>
@@ -437,21 +488,21 @@
 <div class="container">
 
     <!-- ABOUT -->
-    <div class="card">
+    <div class="card c-about">
         <div class="en-content">
-            <h2 class="section-title"><i class="fas fa-user-tie"></i> About Me</h2>
+            <h2 class="section-title"><span class="icon-badge"><i class="fas fa-user-tie"></i></span> About Me</h2>
             <p class="about-text">A transportation engineer and data scientist specializing in traffic-safety analytics and intelligent freeway operations. Currently pursuing an M.Sc. in Transportation Engineering at Amirkabir University of Technology, where a nationally co-funded thesis applies data-driven modeling to driving-history patterns in intercity bus crash prediction. Research spans large-scale GPS/FMS fleet analytics, fuzzy-logic ramp-metering control for freeway networks, and geospatial data engineering &mdash; pairing rigorous statistical methods with production-grade Python tooling to turn raw transportation data into actionable safety and mobility solutions.</p>
         </div>
         <div class="fa-content">
-            <h2 class="section-title"><i class="fas fa-user-tie"></i> درباره من</h2>
+            <h2 class="section-title"><span class="icon-badge"><i class="fas fa-user-tie"></i></span> درباره من</h2>
             <p class="about-text">مهندس حمل‌ونقل و تحلیل‌گر داده با تمرکز بر ایمنی ترافیک و بهره‌برداری هوشمند از آزادراه‌ها. دانشجوی کارشناسی‌ارشد مهندسی حمل‌ونقل در دانشگاه صنعتی امیرکبیر هستم؛ جایی که پایان‌نامه‌ی حمایت‌مالی‌شده‌ام به مدل‌سازی داده‌محور اثر سابقه‌ی رانندگی در پیش‌بینی تصادفات اتوبوس‌های بین‌شهری اختصاص دارد. حوزه‌ی پژوهشی‌ام شامل تحلیل کلان‌مقیاس داده‌های GPS/FMS ناوگان اتوبوسرانی، طراحی کنترلر فازی برای کنترل رمپ آزادراهی و مهندسی داده‌های مکانی است؛ ترکیبی از روش‌های آماری دقیق و ابزارهای برنامه‌نویسی حرفه‌ای پایتون برای تبدیل داده‌های خام حمل‌ونقل به راهکارهای عملی ایمنی و تحرک‌پذیری.</p>
         </div>
     </div>
 
     <!-- EDUCATION -->
-    <div class="card">
+    <div class="card c-edu">
         <div class="en-content">
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <h2 class="section-title"><span class="icon-badge blue2"><i class="fas fa-graduation-cap"></i></span> Education</h2>
             <div class="timeline-item">
                 <div class="item-title">M.Sc. in Transportation Engineering</div>
                 <div class="item-subtitle">Amirkabir University of Technology (AUT)</div>
@@ -468,7 +519,7 @@
             </div>
         </div>
         <div class="fa-content">
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> سوابق تحصیلی</h2>
+            <h2 class="section-title"><span class="icon-badge blue2"><i class="fas fa-graduation-cap"></i></span> سوابق تحصیلی</h2>
             <div class="timeline-item">
                 <div class="item-title">کارشناسی ارشد مهندسی حمل‌ونقل</div>
                 <div class="item-subtitle">دانشگاه صنعتی امیرکبیر</div>
@@ -487,18 +538,18 @@
     </div>
 
     <!-- TEACHING -->
-    <div class="card">
+    <div class="card c-teach">
         <div class="en-content">
-            <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i> Teaching Assistantships</h2>
+            <h2 class="section-title"><span class="icon-badge green"><i class="fas fa-chalkboard-teacher"></i></span> Teaching Assistantships</h2>
             <div class="timeline-item">
                 <div class="item-title">TA &mdash; Operations Research (M.Sc. Level)</div>
                 <div class="item-subtitle">Dept. of Road &amp; Transportation Engineering, AUT &mdash; under <a href="https://aut.ac.ir/cv/2035/%D8%A7%D9%85%DB%8C%D8%B1%20%DA%AF%D9%84%20%D8%B1%D9%88" target="_blank" rel="noopener">Dr. Amir Golrou</a></div>
-                <div class="item-meta">Term 1404-2 (Spring 2026)</div>
+                <div class="item-meta">Spring 2026</div>
             </div>
             <div class="timeline-item">
                 <div class="item-title">TA &mdash; Technical English (B.Sc. Level)</div>
                 <div class="item-subtitle">Dept. of Road &amp; Transportation Engineering, AUT &mdash; under <a href="https://aut.ac.ir/cv/2035/%D8%A7%D9%85%DB%8C%D8%B1%20%DA%AF%D9%84%20%D8%B1%D9%88" target="_blank" rel="noopener">Dr. Amir Golrou</a></div>
-                <div class="item-meta">Term 1403-2 (Spring 2025)</div>
+                <div class="item-meta">Spring 2025</div>
             </div>
             <div class="timeline-item">
                 <div class="item-title">TA &mdash; Dynamics (B.Sc. Level)</div>
@@ -507,7 +558,7 @@
             </div>
         </div>
         <div class="fa-content">
-            <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i> سوابق تدریس و دستیار آموزشی (TA)</h2>
+            <h2 class="section-title"><span class="icon-badge green"><i class="fas fa-chalkboard-teacher"></i></span> سوابق تدریس و دستیار آموزشی (TA)</h2>
             <div class="timeline-item">
                 <div class="item-title">دستیار آموزشی درس تحقیق در عملیات (مقطع کارشناسی ارشد)</div>
                 <div class="item-subtitle">گروه راه و ترابری، دانشگاه صنعتی امیرکبیر &mdash; تحت نظر <a href="https://aut.ac.ir/cv/2035/%D8%A7%D9%85%DB%8C%D8%B1%20%DA%AF%D9%84%20%D8%B1%D9%88" target="_blank" rel="noopener">دکتر امیر گلرو</a></div>
@@ -527,9 +578,9 @@
     </div>
 
     <!-- EXPERIENCE -->
-    <div class="card">
+    <div class="card c-exp">
         <div class="en-content">
-            <h2 class="section-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
+            <h2 class="section-title"><span class="icon-badge amber"><i class="fas fa-briefcase"></i></span> Work Experience</h2>
             <div class="timeline-item">
                 <div class="item-title">Spatial Data Analysis Internship in Transportation</div>
                 <div class="item-subtitle"><a href="https://armanzamin.com/" target="_blank" rel="noopener">Arman Zamin</a></div>
@@ -538,7 +589,7 @@
             <div class="timeline-item">
                 <div class="item-title">Educational Consultant</div>
                 <div class="item-subtitle"><a href="https://dr-yaghoobi.ir/" target="_blank" rel="noopener">Dr. Yaghoubi Counseling Group</a></div>
-                <div class="item-meta live">Present</div>
+                <div class="item-meta live">July 2026 &ndash; Present</div>
             </div>
             <div class="timeline-item">
                 <div class="item-title">Physics Scientific Supervisor</div>
@@ -553,7 +604,7 @@
             </div>
         </div>
         <div class="fa-content">
-            <h2 class="section-title"><i class="fas fa-briefcase"></i> سوابق کاری</h2>
+            <h2 class="section-title"><span class="icon-badge amber"><i class="fas fa-briefcase"></i></span> سوابق کاری</h2>
             <div class="timeline-item">
                 <div class="item-title">کارآموزی تخصصی تحلیل داده‌های مکانی در حمل‌ونقل</div>
                 <div class="item-subtitle"><a href="https://armanzamin.com/" target="_blank" rel="noopener">آرمان زمین (Arman Zamin)</a></div>
@@ -562,7 +613,7 @@
             <div class="timeline-item">
                 <div class="item-title">مشاور تحصیلی</div>
                 <div class="item-subtitle"><a href="https://dr-yaghoobi.ir/" target="_blank" rel="noopener">گروه مشاوره دکتر یعقوبی</a></div>
-                <div class="item-meta live">هم‌اکنون</div>
+                <div class="item-meta live">تیر ۱۴۰۵ &ndash; تاکنون</div>
             </div>
             <div class="timeline-item">
                 <div class="item-title">ناظر علمی درس فیزیک</div>
@@ -579,9 +630,9 @@
     </div>
 
     <!-- HONORS -->
-    <div class="card">
+    <div class="card c-honors">
         <div class="en-content">
-            <h2 class="section-title"><i class="fas fa-trophy"></i> Honors &amp; Achievements</h2>
+            <h2 class="section-title"><span class="icon-badge"><i class="fas fa-trophy"></i></span> Honors &amp; Achievements</h2>
 
             <div class="honor-card">
                 <div class="honor-icon award"><i class="fas fa-award"></i></div>
@@ -595,15 +646,15 @@
                 <div class="honor-icon fellowship"><i class="fas fa-star"></i></div>
                 <div>
                     <div class="honor-kicker fellowship">Fellowship</div>
-                    <div class="honor-title">Shahid Ahmadi-Roshan Plan &mdash; National Elites Foundation</div>
-                    <div class="honor-body">Member of the Problem-Oriented Research/Technology Core Development Plan; currently active in the freeway ramp-control project under this plan, supervised by Dr. Mesbah.</div>
+                    <div class="honor-title">Shahid Ahmadi-Roshan Plan &mdash; <a href="https://bmn.ir/" target="_blank" rel="noopener">National Elites Foundation</a></div>
+                    <div class="honor-body">Member of the Problem-Oriented Research/Technology Core Development Plan; currently participating in a freeway ramp-coordination project under this plan, supervised by Dr. Mesbah, with a particular focus on developing the fuzzy logic controller.</div>
                 </div>
             </div>
             <div class="honor-card">
                 <div class="honor-icon fellowship"><i class="fas fa-star"></i></div>
                 <div>
                     <div class="honor-kicker fellowship">Fellowship</div>
-                    <div class="honor-title">Shahid Vezvaei Plan &mdash; National Elites Foundation</div>
+                    <div class="honor-title">Shahid Vezvaei Plan &mdash; <a href="https://bmn.ir/" target="_blank" rel="noopener">National Elites Foundation</a></div>
                     <div class="honor-body">Member of the national plan supporting scientific &amp; cultural activities of talented students; recognized as a top student based on academic record and awarded financial support.</div>
                 </div>
             </div>
@@ -626,7 +677,7 @@
         </div>
 
         <div class="fa-content">
-            <h2 class="section-title"><i class="fas fa-trophy"></i> دستاوردها و افتخارات</h2>
+            <h2 class="section-title"><span class="icon-badge"><i class="fas fa-trophy"></i></span> دستاوردها و افتخارات</h2>
 
             <div class="honor-card">
                 <div class="honor-icon award"><i class="fas fa-award"></i></div>
@@ -640,15 +691,15 @@
                 <div class="honor-icon fellowship"><i class="fas fa-star"></i></div>
                 <div>
                     <div class="honor-kicker fellowship">بورس پژوهشی</div>
-                    <div class="honor-title">طرح شهید احمدی روشن &mdash; بنیاد ملی نخبگان</div>
-                    <div class="honor-body">عضو طرح توسعه هسته‌های مسأله‌محور پژوهشی/فناورانه؛ در حال حاضر در پروژه کنترل رمپ آزادراهی ذیل این طرح، تحت نظارت دکتر مصباح فعالیت دارم.</div>
+                    <div class="honor-title">طرح شهید احمدی روشن &mdash; <a href="https://bmn.ir/" target="_blank" rel="noopener">بنیاد ملی نخبگان</a></div>
+                    <div class="honor-body">عضو طرح توسعه هسته‌های مسأله‌محور پژوهشی/فناورانه؛ در حال حاضر در پروژه هماهنگ‌سازی رمپ آزادراهی ذیل این طرح، تحت نظارت دکتر مصباح فعالیت دارم و به‌طور ویژه بر توسعه‌ی کنترلر فازی این پروژه متمرکز هستم.</div>
                 </div>
             </div>
             <div class="honor-card">
                 <div class="honor-icon fellowship"><i class="fas fa-star"></i></div>
                 <div>
                     <div class="honor-kicker fellowship">بورس پژوهشی</div>
-                    <div class="honor-title">طرح شهید وزوایی &mdash; بنیاد ملی نخبگان</div>
+                    <div class="honor-title">طرح شهید وزوایی &mdash; <a href="https://bmn.ir/" target="_blank" rel="noopener">بنیاد ملی نخبگان</a></div>
                     <div class="honor-body">عضو طرح پشتیبانی از فعالیت‌های علمی و فرهنگی دانشجویان مستعد تحصیلی کشور؛ براساس سوابق تحصیلی به‌عنوان دانشجوی برتر شناخته شده و مورد حمایت مالی قرار گرفته‌ام.</div>
                 </div>
             </div>
@@ -672,36 +723,36 @@
     </div>
 
     <!-- SKILLS -->
-    <div class="card">
+    <div class="card c-skills">
         <div class="en-content">
-            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
+            <h2 class="section-title"><span class="icon-badge blue2"><i class="fas fa-laptop-code"></i></span> Technical Skills</h2>
 
             <div class="skill-group-title">Software &amp; Analysis Tools</div>
-            <div class="skill-row"><div class="skill-name">Python</div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">VISSIM &amp; VISSUM</div><div class="skill-track"><div class="skill-fill" style="width:72%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">Civil3D &amp; AutoCAD</div><div class="skill-track"><div class="skill-fill" style="width:65%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">Microsoft Office</div><div class="skill-track"><div class="skill-fill" style="width:82%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">SUMO <span class="level-tag">Basic</span></div><div class="skill-track"><div class="skill-fill" style="width:38%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">ArcGIS <span class="level-tag">Basic</span></div><div class="skill-track"><div class="skill-fill" style="width:35%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">QGIS <span class="level-tag">Basic</span></div><div class="skill-track"><div class="skill-fill" style="width:35%"></div></div></div>
+            <div class="skill-row"><div class="skill-name">Python</div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div><div class="skill-score">9<span>/10</span></div></div>
+            <div class="skill-row"><div class="skill-name">VISSIM &amp; VISSUM</div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div><div class="skill-score">7<span>/10</span></div></div>
+            <div class="skill-row"><div class="skill-name">Civil3D &amp; AutoCAD</div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div><div class="skill-score">7<span>/10</span></div></div>
+            <div class="skill-row"><div class="skill-name">Microsoft Office</div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div><div class="skill-score">8<span>/10</span></div></div>
+            <div class="skill-row"><div class="skill-name">SUMO</div><div class="skill-track"><div class="skill-fill" style="width:40%"></div></div><div class="skill-score">4<span>/10</span></div></div>
+            <div class="skill-row"><div class="skill-name">ArcGIS</div><div class="skill-track"><div class="skill-fill" style="width:40%"></div></div><div class="skill-score">4<span>/10</span></div></div>
+            <div class="skill-row"><div class="skill-name">QGIS</div><div class="skill-track"><div class="skill-fill" style="width:40%"></div></div><div class="skill-score">4<span>/10</span></div></div>
 
             <div class="skill-group-title">Languages</div>
-            <div class="skill-row"><div class="skill-name">English <span class="level-tag">Advanced</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-row"><div class="skill-name">English</div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div><div class="skill-score">9<span>/10</span></div></div>
         </div>
         <div class="fa-content">
-            <h2 class="section-title"><i class="fas fa-laptop-code"></i> مهارت‌های تخصصی</h2>
+            <h2 class="section-title"><span class="icon-badge blue2"><i class="fas fa-laptop-code"></i></span> مهارت‌های تخصصی</h2>
 
             <div class="skill-group-title">نرم‌افزار و ابزارهای تحلیل</div>
-            <div class="skill-row"><div class="skill-name">Python</div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">Vissim &amp; Vissum</div><div class="skill-track"><div class="skill-fill" style="width:72%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">Civil3D &amp; AutoCAD</div><div class="skill-track"><div class="skill-fill" style="width:65%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">Microsoft Office</div><div class="skill-track"><div class="skill-fill" style="width:82%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">Sumo <span class="level-tag">مقدماتی</span></div><div class="skill-track"><div class="skill-fill" style="width:38%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">ArcGIS <span class="level-tag">مقدماتی</span></div><div class="skill-track"><div class="skill-fill" style="width:35%"></div></div></div>
-            <div class="skill-row"><div class="skill-name">QGIS <span class="level-tag">مقدماتی</span></div><div class="skill-track"><div class="skill-fill" style="width:35%"></div></div></div>
+            <div class="skill-row"><div class="skill-name">Python</div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div><div class="skill-score">۹<span>/۱۰</span></div></div>
+            <div class="skill-row"><div class="skill-name">Vissim &amp; Vissum</div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div><div class="skill-score">۷<span>/۱۰</span></div></div>
+            <div class="skill-row"><div class="skill-name">Civil3D &amp; AutoCAD</div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div><div class="skill-score">۷<span>/۱۰</span></div></div>
+            <div class="skill-row"><div class="skill-name">Microsoft Office</div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div><div class="skill-score">۸<span>/۱۰</span></div></div>
+            <div class="skill-row"><div class="skill-name">Sumo</div><div class="skill-track"><div class="skill-fill" style="width:40%"></div></div><div class="skill-score">۴<span>/۱۰</span></div></div>
+            <div class="skill-row"><div class="skill-name">ArcGIS</div><div class="skill-track"><div class="skill-fill" style="width:40%"></div></div><div class="skill-score">۴<span>/۱۰</span></div></div>
+            <div class="skill-row"><div class="skill-name">QGIS</div><div class="skill-track"><div class="skill-fill" style="width:40%"></div></div><div class="skill-score">۴<span>/۱۰</span></div></div>
 
             <div class="skill-group-title">زبان</div>
-            <div class="skill-row"><div class="skill-name">انگلیسی <span class="level-tag">تسلط بالا</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-row"><div class="skill-name">انگلیسی</div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div><div class="skill-score">۹<span>/۱۰</span></div></div>
         </div>
     </div>
 
