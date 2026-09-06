@@ -587,11 +587,6 @@
                 <div class="item-meta live">July 2026 &ndash; Present</div>
             </div>
             <div class="timeline-item">
-                <div class="item-title">Educational Consultant</div>
-                <div class="item-subtitle"><a href="https://dr-yaghoobi.ir/" target="_blank" rel="noopener">Dr. Yaghoubi Counseling Group</a></div>
-                <div class="item-meta live">July 2026 &ndash; Present</div>
-            </div>
-            <div class="timeline-item">
                 <div class="item-title">Physics Scientific Supervisor</div>
                 <div class="item-subtitle"><a href="http://www.mandegaralborz.sch.ir/" target="_blank" rel="noopener">Mandegar Alborz High School</a></div>
                 <div class="item-meta">Oct 2025 &ndash; Feb 2026</div>
@@ -608,11 +603,6 @@
             <div class="timeline-item">
                 <div class="item-title">کارآموزی تخصصی تحلیل داده‌های مکانی در حمل‌ونقل</div>
                 <div class="item-subtitle"><a href="https://armanzamin.com/" target="_blank" rel="noopener">آرمان زمین (Arman Zamin)</a></div>
-                <div class="item-meta live">تیر ۱۴۰۵ &ndash; تاکنون</div>
-            </div>
-            <div class="timeline-item">
-                <div class="item-title">مشاور تحصیلی</div>
-                <div class="item-subtitle"><a href="https://dr-yaghoobi.ir/" target="_blank" rel="noopener">گروه مشاوره دکتر یعقوبی</a></div>
                 <div class="item-meta live">تیر ۱۴۰۵ &ndash; تاکنون</div>
             </div>
             <div class="timeline-item">
@@ -640,6 +630,14 @@
                     <div class="honor-kicker award">Award</div>
                     <div class="honor-title">Selected Researcher &mdash; Amirkabir University of Technology (2025)</div>
                     <div class="honor-body">The B.Sc. project &ldquo;Converting text address of Traffic Violations to geographical coordinates&rdquo; was selected as an outstanding project at the university level.</div>
+                </div>
+            </div>
+            <div class="honor-card">
+                <div class="honor-icon award"><i class="fas fa-trophy"></i></div>
+                <div>
+                    <div class="honor-kicker award">Competition</div>
+                    <div class="honor-title">First Place Team &mdash; 3rd National Problem-Oriented Rahi Sho Competition</div>
+                    <div class="honor-body">Project: Improving the Speed and Quality of Transportation of Agricultural Inputs, Day-Old Chicks, Live Poultry, and Post-Slaughter Transport (2026).</div>
                 </div>
             </div>
             <div class="honor-card">
@@ -685,6 +683,14 @@
                     <div class="honor-kicker award">افتخار</div>
                     <div class="honor-title">پژوهشگر برگزیده دانشگاه صنعتی امیرکبیر (۱۴۰۴)</div>
                     <div class="honor-body">پروژه کارشناسی با عنوان «تبدیل آدرس‌های متنی تخلفات ترافیکی به مختصات جغرافیایی» در سطح دانشگاه به‌عنوان پروژه برگزیده انتخاب شد.</div>
+                </div>
+            </div>
+            <div class="honor-card">
+                <div class="honor-icon award"><i class="fas fa-trophy"></i></div>
+                <div>
+                    <div class="honor-kicker award">مسابقه</div>
+                    <div class="honor-title">تیم اول در سومین مسابقه ملی مسئله‌محور راهی شو</div>
+                    <div class="honor-body">پروژه: بهبود در سرعت و کیفیت حمل‌ونقل نهاده‌ها، جوجه یک‌روزه، مرغ زنده و حمل پس از کشتار (۱۴۰۵).</div>
                 </div>
             </div>
             <div class="honor-card">
